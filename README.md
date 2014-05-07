@@ -1,4 +1,8 @@
-copay-whitepaper
+Copay Whitepaper
 ================
 
-Copay: A Multisignature Wallet
+Build with:
+
+```
+pdflatex copay.tex
+```
