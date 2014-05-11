@@ -14,9 +14,9 @@ Juan Sosa
 \date{}
 \maketitle
 \begin{abstract}
-Bitcoin security can be enhanced by requiring multiple signatures for transactions (multisig), but all existing multisig solutions suffer from being either unfriendly to use or from requiring a centralized key-signing server that might fail.
+Bitcoin security can be enhanced by requiring multiple signatures for transactions (multisig), but all existing multisig solutions suffer from being either unfriendly to use or from requiring centralized key-signing servers that might fail.
 Copay is designed to bring all of the security of multisig to a wallet that is as easy to use as an ordinary bitcoin wallet, while eliminating the possibility that the failure of a central server will deny service to users.
-First, Copay introduces the notion of a general M-of-N multisig wallet, where N particular people (or devices) join a wallet where every outbound transaction requires that M of them sign.
+First, Copay introduces the notion of an M-of-N multisig wallet, where N particular people (or devices) join a wallet where every outbound transaction requires that M of them sign.
 Communications between the copayers are p2p and wallets are stored client-side, so no central servers are required (servers are required for facilitating the p2p connections and interacting with the blockchain, but these are open-source and can be run by the users).
 It runs on every platform, including platforms hostile to bitcoin.
 Second, for this to be possible, we make use of many modern technologies:
