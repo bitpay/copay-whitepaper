@@ -2,7 +2,7 @@
 \usepackage{amsmath, amsthm, amssymb}
 \begin{document}
 \pagestyle{headings}
-\title{Copay: A Multisignature Wallet}
+\title{Copay: A Decentralized Multisignature Wallet}
 \author{
 Ryan X. Charles,
 Matias Alejo Garcia,
@@ -14,7 +14,17 @@ Juan Sosa
 \date{}
 \maketitle
 \begin{abstract}
-Copay is a multisignature wallet.
+Bitcoin security can be enhanced by requiring multiple signatures for transactions (multisig), but all existing multisig solutions suffer from being either unfriendly to use or from requiring a centralized key-signing server that might fail.
+Copay is designed to bring all of the security of multisig to a wallet that is as easy to use as an ordinary bitcoin wallet, while eliminating the possibility that the failure of a central server will deny service to users.
+First, Copay introduces the notion of a general M-of-N multisig wallet, where N particular people (or devices) join a wallet where every outbound transaction requires that M of them sign.
+Communications between the copayers are p2p and wallets are stored client-side, so no central servers are required (servers are required for facilitating the p2p connections and interacting with the blockchain, but these are open-source and can be run by the users).
+It runs on every platform, including platforms hostile to bitcoin.
+Second, for this to be possible, we make use of many modern technologies:
+1) It is written in javascript and HTML so that it runs on every platform, including phones,
+2) We use p2p WebRTC connections between users so that communications have no dependence on central servers,
+3) We use HTML 5 local storage to store the encrypted wallet so that storage has no dependence on central servers,
+4) We use P2SH addresses so that sending to the wallet is as easy as sending to any bitcoin wallet,
+5) We use BIP32 hierarchical deterministic keys so that backing up your wallet needs to be done only once, and generating new addresses can be done offline.
 \end{abstract}
 
 \section{Introduction}
