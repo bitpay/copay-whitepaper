@@ -29,7 +29,24 @@ Second, for this to be possible, we make use of many modern technologies:
 
 \section{Introduction}
 
-Paragraph.
+Although the bitcoin protocol itself is cryptographically secure, individual users or companies may not be secure.
+Normal pubkeyhash transactions require only one signature, which in turn requires only one private key.
+If this private key or if the entire wallet of private keys is revealed to an attacker due to weak security from the user, then the user's bitcoins can be stolen.
+
+Multisignature transactions offer a solution to this problem by requiring multiple signatures per transaction.
+Each signature requires a different private key, which can all be stored on different devices in different places.
+This reduces the probability that the bitcoins can be stolen, since not just one, but multiple devices must simultaneously be compromised.
+
+Multisignature transactions have been possible in bitcoin since the genesis block with the OP\_CHECKMULTISIG operation. Multisignature transactions became standard on [TODO: insert date], meaning they are relayed by default by the reference client.
+In order to make advanced transactions more accessible, pay-to-script-hash (P2SH) transactions were introduced on [TODO: insert date].
+P2SH transactions allow a serialized script, the redeemScript, to be inserted into the scriptSig which is executed after the scriptPubKey.
+The redeemScript can be any one of the standard scriptPubKeys, including a multisignature scriptPubKey.
+In effect this means it is possible to pay to an address that requires multiple signatures to spend.
+
+P2SH multisignature transactions have had an RPC interface in the reference client since [TODO: insert date].
+However, the RPC interface is too technically challenging for most users, and is cumbersome even for technically sophisticated users.
+The primary goal of Copay is to make the security of multisig accessible to ordinary users by having a friendly UI.
+
 
 \section{Concepts}
 
