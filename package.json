@@ -1,0 +1,8 @@
+{
+  "name": "copay-whitepaper",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt-latex": "~0.2.2",
+    "grunt-contrib-watch": "~0.6.1"
+  }
+}
