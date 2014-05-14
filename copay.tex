@@ -19,7 +19,7 @@ Copay is designed to bring all of the security of multisig to a wallet that is a
 First, Copay introduces the notion of an M-of-N multisig wallet, where N particular people (or devices) join a wallet where every outbound transaction requires that M of them sign.
 Communications between the copayers are p2p and wallets are stored client-side, so no central servers are required (servers are required for facilitating the p2p connections and interacting with the blockchain, but these are open-source and can be run by the users).
 It runs on every platform, including platforms hostile to bitcoin.
-Second, for this to be possible, we make use of many modern technologies:
+For this to be possible, we make use of many modern technologies:
 1) It is written in javascript and HTML so that it runs on every platform, including phones,
 2) We use p2p WebRTC connections between users so that communications have no dependence on central servers,
 3) We use HTML 5 local storage to store the encrypted wallet so that storage has no dependence on central servers,
@@ -35,7 +35,7 @@ If this private key or if the entire wallet of private keys is revealed to an at
 
 Multisignature transactions offer a solution to this problem by requiring multiple signatures per transaction.
 Each signature requires a different private key, which can all be stored on different devices in different places.
-This reduces the probability that the bitcoins can be stolen, since not just one, but multiple devices must simultaneously be compromised.
+This reduces the probability that the bitcoins can be stolen, since not just one, but multiple devices must be compromised.
 
 Multisignature transactions have been possible in bitcoin since the genesis block with the OP\_CHECKMULTISIG operation. Multisignature transactions became standard on [TODO: insert date], meaning they are relayed by default by the reference client.
 In order to make advanced transactions more accessible, pay-to-script-hash (P2SH) transactions were introduced on [TODO: insert date].
@@ -45,23 +45,64 @@ In effect this means it is possible to pay to an address that requires multiple 
 
 P2SH multisignature transactions have had an RPC interface in the reference client since [TODO: insert date].
 However, the RPC interface is too technically challenging for most users, and is cumbersome even for technically sophisticated users.
-The primary goal of Copay is to make the security of multisig accessible to ordinary users by having a friendly UI.
+The primary goal of Copay is to make the security of multisig accessible to ordinary users by having a friendly UI, while simultaneously being open-source and decentralized.
+To do this we introduce the notion of an M-of-N wallet which is shared amongst N people or devices, and M of those people or devices are required to sign outbound transactions.
+What is shared amongst the N copayers are the public keys and addresses of the other copayers, but the private keys of each copayer remains private.
 
+In most bitcoin wallets, addresses are computed from randomly generated private keys.
+In order to make backups easier and to make sharing public keys easier, we use BIP32 hierarchical deterministic keys [TODO: reference], which allows each copayer to generate a single master extended private key that needs to be backed up only once.
+The copayers then share the extended public keys with the other copayers, and any copayer can generate new addresses for receiving bitcoins at any time.
+Creating new addresses does not require any further sharing of public keys, since all copayers can generate the public keys of all other copayers.
 
-\section{Concepts}
+When a copayer wishes to send bitcoins, they produce a transaction proposal, the inputs of which consist of unspent outputs from the wallet that must be signed by M copayers.
+This transaction proposal contains the signature of the author, but not yet the signatures of any of the other copayers.
+The other copayers see the transaction proposal displayed in their screen, and they can choose either to sign the transaction proposal, or to reject it.
+As soon as the transaction reaches all M signatures, it is broadcast to the bitcoin network and should soon be mined into a block.
 
-Paragraph.
+\section{Multisignature Transactions}
 
-\section{Technologies}
+\section{P2SH Transactions}
 
-Paragraph.
+\section{HTML5 Local Storage}
 
-\section{Next Steps}
+Modern web browsers allow each domain to store up to 5 MB in localStorage. This is where we save all the wallet data
 
-Paragraph.
+[TODO: expand]
+
+\section{BIP32: Hierarchical Deterministic Keys}
+
+\subsection{Introduction of BIP32}
+
+[TODO: brief description of BIP32 itself]
+
+\subsection{Protocol for Addresses}
+
+[TODO: description of our protocol for generating addresses]
+
+\section{WebRTC P2P Connections and PeerJS}
+
+[TODO: Description of P2P connections with Web RTC and PeerJS]
+
+\section{Introduction to Web RTC P2P}
+
+\subsection{Building a Wallet}
+
+\subsection{Transaction Proposals}
+
+\section{Building a Wallet}
+
+\section{P2P Communications}
+
+\section{Insight}
+
+\section{Future Direction}
+
+[TODO: remove this section?]
+
+\subsection{SPV}
+
+\subsection{Privacy}
 
 \section{Conclusion}
-
-Paragraph.
 
 \end{document}
